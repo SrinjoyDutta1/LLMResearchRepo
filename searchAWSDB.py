@@ -5,11 +5,12 @@ import os
 
 def fetch_data_from_db():
     # Connect to the AWS RDS MySQL instance
+    #enter your own creds here 
     cnx = pymysql.connect(
-        host='database-1.cbkiicwyecbs.us-east-1.rds.amazonaws.com',
-        user='admin',
-        password='LLMResearch1123!',
-        database='LLMResearch'
+        host='',
+        user='',
+        password='',
+        database=''
     )
     
     query = "SELECT * FROM LLMComparison"
@@ -27,7 +28,7 @@ def process_and_save_specific_columns(df):
     specific_columns = ['BERTCosineScore_ChatGPT', 'BERTCosineScore_Bard', 'Category', 'CurrentIndex']
     df_specific = df[specific_columns]
     
-    save_to_csv(df_specific, '/Users/srinjoydutta/Desktop/LLMResearch/dataset/BertCosineScores.csv')
+    save_to_csv(df_specific, 'LLMResearch/dataset/BertCosineScores.csv')
 
 def calculate_averages(df):
     average_chatgpt = df['BERTCosineScore_ChatGPT'].mean()
@@ -61,7 +62,7 @@ def mean_and_std_by_category(df):
     return mean_std_by_category
 
 def save_results_to_txt(average_chatgpt, average_bard, averages_by_category, stats, mean_std_by_category):
-    filepath = '/Users/srinjoydutta/Desktop/LLMResearch/finalResults.txt'
+    filepath = 'LLMResearch/finalResults.txt'
     os.makedirs(os.path.dirname(filepath), exist_ok=True)
     
     with open(filepath, 'w') as f:
@@ -84,7 +85,7 @@ def main():
     
     
     # Save all data to finalResults.csv
-    save_to_csv(df, '/Users/srinjoydutta/Desktop/LLMResearch/finalResults.csv')
+    save_to_csv(df, 'LLMResearch/finalResults.csv')
     
     # Save specific columns to dataset/BertCosineScores.csv
     process_and_save_specific_columns(df)
