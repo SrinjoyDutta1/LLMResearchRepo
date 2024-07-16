@@ -1,0 +1,12 @@
+//To Create the LLMComparison table
+
+CREATE TABLE LLMComparison (
+    ID INT PRIMARY KEY AUTO_INCREMENT,
+    StackOverflowQuestionsNumLikes INT,
+    StackOverflowAnswer TEXT,
+    StackOverflowQuestion TEXT,
+    ChatGPTResponse TEXT,
+    GeminiResponse TEXT,
+    BERTCosineScore FLOAT
+);
+
